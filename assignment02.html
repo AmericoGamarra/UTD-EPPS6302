@@ -196,6 +196,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./assignment02.html" class="sidebar-item-text sidebar-link active">Assignment 02</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment03.html" class="sidebar-item-text sidebar-link">Assignment 03 + Pre Hackaton</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignment04.html" class="sidebar-item-text sidebar-link">Assignment 04 Hackaton</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -347,8 +357,190 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="can-you-generate-these-charts-individually-try-these-functions-using-another-dataset." class="level3">
 <h3 class="anchored" data-anchor-id="can-you-generate-these-charts-individually-try-these-functions-using-another-dataset.">2. Can you generate these charts individually? Try these functions using another dataset.</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise: Can you generate these charts individually?  Try these functions </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using another dataset. Be sure to work on the layout and margins</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise: Can you generate these charts individually?  </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Try these functions using another dataset. </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to work on the layout and margins</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgl)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_hpi <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"assignment02/HPI_2021_public_dataset.csv"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_hpi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  HPI_rank     Country ISO YearCtry Continent Population LifeExpectancy
+1       NA     Burundi BDI  2021BDI         5  12551.213         61.663
+2       NA       Sudan SDN  2021SDN         5  45657.202         65.267
+3        1     Vanuatu VUT  2021VUT         8    319.137         70.449
+4        2      Sweden SWE  2021SWE         3  10467.097         82.983
+5        3 El Salvador SLV  2021SLV         1   6314.167         70.748
+6        4  Costa Rica CRI  2021CRI         1   5153.957         77.023
+  LadderOfLife_Wellbeing CarbonFootprint_tCO2e      HPI
+1                     NA             0.6527308       NA
+2                     NA             0.8727170       NA
+3               7.121429             2.6163893 57.86116
+4               7.439280             8.6980459 55.93532
+5               6.431447             2.0284885 54.67388
+6               6.408448             4.3699376 54.13215
+  CO2_threshold_year_tCO2e GDP_per_capita_usd
+1                 3.172217           714.0667
+2                 3.172217          3701.0691
+3                 3.172217          2800.4939
+4                 3.172217         53771.9813
+5                 3.172217          9191.6040
+6                 3.172217         21189.6957</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_hpi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "HPI_rank"                 "Country"                 
+ [3] "ISO"                      "YearCtry"                
+ [5] "Continent"                "Population"              
+ [7] "LifeExpectancy"           "LadderOfLife_Wellbeing"  
+ [9] "CarbonFootprint_tCO2e"    "HPI"                     
+[11] "CO2_threshold_year_tCO2e" "GDP_per_capita_usd"      </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Scatterplot</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_hpi<span class="sc">$</span>LifeExpectancy, df_hpi<span class="sc">$</span>CarbonFootprint_tCO2e, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>,  <span class="at">main =</span> <span class="st">"Carbon Footprint vs Life Expectancy "</span>, <span class="at">xlab =</span> <span class="st">"Life Expectancy in years"</span>, <span class="at">ylab =</span> <span class="st">"Carbon Footprint in tons of CO2 equivalent"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">50</span>),  <span class="at">yaxt =</span> <span class="st">'n'</span>, <span class="at">yaxs =</span> <span class="st">'i'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span> , <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'0'</span>, <span class="st">''</span>, <span class="st">'20'</span>, <span class="st">''</span>, <span class="st">'40'</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment02_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the parameter (3 rows by 2 cols)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>df_mostPop <span class="ot">&lt;-</span> <span class="fu">head</span>(df_hpi[<span class="fu">order</span>(df_hpi<span class="sc">$</span>Population, <span class="at">decreasing=</span> T),], <span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_leastPop <span class="ot">&lt;-</span> <span class="fu">head</span>(df_hpi[<span class="fu">order</span>(df_hpi<span class="sc">$</span>Population, <span class="at">decreasing=</span> F),], <span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1)  Scatterplot</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="fu">c</span>(df_mostPop<span class="sc">$</span>LifeExpectancy)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">c</span>(df_leastPop<span class="sc">$</span>LifeExpectancy)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting label orientation, margins c(bottom, left, top, right) &amp; text size</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">las=</span><span class="dv">1</span>, <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">cex=</span>.<span class="dv">7</span>) </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="fu">range</span>(x), <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">100</span>))</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y1)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y2)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x, y1, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex=</span><span class="dv">2</span>) <span class="co"># Try different cex value?  </span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x, y2, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"white"</span>, <span class="at">cex=</span><span class="dv">2</span>)  <span class="co"># Different background color</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">col=</span><span class="st">"gray50"</span>, <span class="at">fg=</span><span class="st">"gray50"</span>, <span class="at">col.axis=</span><span class="st">"gray50"</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">1</span>)) <span class="co"># What is the first number standing for?</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co">#axis(4, at=seq(0, 6, 2))</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="at">bty=</span><span class="st">"u"</span>)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"5 Most/Least Populated Countries"</span>, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="dv">2</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Life Expectaancy"</span>, <span class="at">side=</span><span class="dv">2</span>, <span class="at">line=</span><span class="dv">2</span>, <span class="at">las=</span><span class="dv">0</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co">#mtext("Responses per Second", side=4, line=2, las=0, cex=0.8)</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">3</span>, <span class="dv">98</span>, <span class="st">"Least Populated"</span>)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">3</span>, <span class="dv">55</span>, <span class="st">"Most Populated"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>), <span class="at">col=</span><span class="st">"black"</span>, <span class="at">fg=</span><span class="st">"black"</span>, <span class="at">col.axis=</span><span class="st">"black"</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 2)  Histogram</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.5</span>, <span class="fl">4.1</span>, <span class="fl">3.1</span>, <span class="dv">0</span>))</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df_hpi<span class="sc">$</span>LifeExpectancy)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">hist</span>(Y, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">5</span>), <span class="at">plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Y, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">5</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>), </span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gray80"</span>, <span class="at">prob=</span><span class="cn">TRUE</span>,</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of Life Expectancy"</span>,</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Life Expectancy"</span>)</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(Y), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># 3)  Barplot</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">3.1</span>, <span class="dv">2</span>, <span class="fl">2.1</span>)) </span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>df_PLLH <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df_hpi[<span class="fu">c</span>(<span class="st">'Population'</span>, <span class="st">'LifeExpectancy'</span>, <span class="st">'LadderOfLife_Wellbeing'</span>, <span class="st">'HPI'</span>)])</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>popLabels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'0 to 50M'</span>, <span class="st">'50M to 100M'</span>, <span class="st">'100M to 200M'</span>, <span class="st">'200M to 350M'</span>, <span class="st">'350M to 1.5B'</span>)</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>popBreaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>, <span class="dv">100000</span>, <span class="dv">200000</span>, <span class="dv">350000</span>, <span class="dv">1500000</span>)</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>df_PLLH <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df_hpi[<span class="fu">c</span>(<span class="st">'Population'</span>, <span class="st">'LifeExpectancy'</span>, <span class="st">'LadderOfLife_Wellbeing'</span>, <span class="st">'HPI'</span>)])</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>df_PLLH<span class="sc">$</span>PopCategory <span class="ot">&lt;-</span> <span class="fu">cut</span>(df_PLLH<span class="sc">$</span>Population, <span class="at">breaks =</span> popBreaks, <span class="at">right=</span><span class="cn">TRUE</span>, <span class="at">labels =</span> popLabels)</span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>df_Mean_PPLH <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(LifeExpectancy,LadderOfLife_Wellbeing,HPI) <span class="sc">~</span> PopCategory, <span class="at">data =</span> df_PLLH, <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>df_Mean_PPLH2 <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(df_Mean_PPLH[<span class="fu">c</span>(<span class="st">'LifeExpectancy'</span>, <span class="st">'LadderOfLife_Wellbeing'</span>, <span class="st">'HPI'</span>)])</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>midpts <span class="ot">&lt;-</span> <span class="fu">barplot</span>(df_Mean_PPLH2, </span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>                  <span class="at">col=</span><span class="fu">gray</span>(<span class="fl">0.1</span> <span class="sc">+</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">2</span>)<span class="sc">/</span><span class="dv">11</span>), </span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>                  <span class="at">names=</span><span class="fu">rep</span>(<span class="st">""</span>, <span class="dv">3</span>))</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="fu">sub</span>(<span class="st">" "</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">colnames</span>(df_Mean_PPLH2)),</span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">at=</span>midpts, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="fl">0.5</span>, <span class="at">cex=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))  </span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="co"># 4)  Boxplot</span></span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">4.1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Population<span class="sc">/</span><span class="fl">1e3</span> <span class="sc">~</span> Continent, <span class="at">data =</span> df_hpi,</span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>        <span class="at">boxwex =</span> <span class="fl">0.25</span>, <span class="at">col=</span><span class="st">"white"</span>,</span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">"Continent"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">350</span>))</span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Population (Millions) by Continent"</span>, <span class="at">side=</span><span class="dv">1</span>, <span class="at">line=</span><span class="fl">2.5</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>))</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a><span class="co"># 5)  Persp</span></span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a>df_LGH <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df_hpi[<span class="fu">c</span>(<span class="st">'LifeExpectancy'</span>, <span class="st">'GDP_per_capita_usd'</span>, <span class="st">'HPI'</span>)])</span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> df_LGH<span class="sc">$</span>LifeExpectancy</span>
+<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> df_LGH<span class="sc">$</span>GDP_per_capita_usd</span>
+<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> df_LGH<span class="sc">$</span>HPI</span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="fu">max</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">length =</span> <span class="dv">30</span>)</span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="fu">max</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">length =</span> <span class="dv">30</span>)</span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y) { <span class="fu">return</span>((x <span class="sc">+</span> y) <span class="sc">/</span> <span class="dv">2</span>) }</span>
+<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">outer</span>(x, y, f)</span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">lwd=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(x, y, z, <span class="at">theta =</span> <span class="dv">30</span>, <span class="at">phi =</span> <span class="dv">30</span>,</span>
+<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"Life Expectancy"</span>, <span class="at">ylab =</span> <span class="st">"GDP per Capita"</span>, <span class="at">zlab =</span> <span class="st">"HPI"</span>)</span>
+<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">2.1</span>), <span class="at">lwd=</span><span class="dv">1</span>)</span>
+<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a><span class="co"># 6)  Piechart</span></span>
+<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">xpd=</span><span class="cn">FALSE</span>, <span class="at">cex=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-99"><a href="#cb15-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a>df_CP <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df_hpi[<span class="fu">c</span>(<span class="st">'Continent'</span>, <span class="st">'Population'</span>)])</span>
+<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a>df_Sum_Pop <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Population <span class="sc">~</span> Continent, <span class="at">data =</span> df_CP, <span class="at">FUN =</span> sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a>totPop <span class="ot">&lt;-</span> <span class="fu">sum</span>(df_Sum_Pop<span class="sc">$</span>Population)</span>
+<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a>df_Sum_Pop<span class="sc">$</span>PctPop <span class="ot">&lt;-</span> (df_Sum_Pop<span class="sc">$</span>Population <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> totPop)</span>
+<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a>pctPop <span class="ot">&lt;-</span> <span class="fu">c</span>(df_Sum_Pop<span class="sc">$</span>PctPop)</span>
+<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pctPop) <span class="ot">&lt;-</span> <span class="fu">c</span>(df_Sum_Pop<span class="sc">$</span>Continent)</span>
+<span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(pctPop, <span class="at">col =</span> <span class="fu">gray</span>(<span class="fu">seq</span>(<span class="fl">0.3</span>,<span class="fl">1.0</span>,<span class="at">length=</span><span class="dv">8</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assignment02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 
 
