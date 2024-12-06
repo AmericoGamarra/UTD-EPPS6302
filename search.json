@@ -54,5 +54,19 @@
     "title": "Assignment 06",
     "section": "",
     "text": "b. Build a Shiny app using the following datasets (in datasets library):\ni. mtcars\nhttps://americogamarra.shinyapps.io/mtcarsApp/\n\nii. USArrests\nhttps://americogamarra.shinyapps.io/USArrests/\n\niii. uspop\nhttps://americogamarra.shinyapps.io/uspop/\n\n\n\nd. Build a Shiny app loaded with your own data sets\nhttps://americogamarra.shinyapps.io/GeoViz1/"
+  },
+  {
+    "objectID": "assignment07.html",
+    "href": "assignment07.html",
+    "title": "Assignment 07",
+    "section": "",
+    "text": "The Shiny app for assignment 7 can be found in this link is embedded below:"
+  },
+  {
+    "objectID": "assignment08.html",
+    "href": "assignment08.html",
+    "title": "Assignment 08",
+    "section": "",
+    "text": "The Shiny app for assignment 8 is embedded below:\nhttps://americogamarra.shinyapps.io/GeoVisMaps2/"
   }
 ]
