@@ -75,7 +75,7 @@ ul.task-list{list-style: none;}
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">EPPS6356</a>
+    <a class="nav-link" href="./index.html">EPPS6302</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html">Americo Gamarra</a>
@@ -135,37 +135,17 @@ ul.task-list{list-style: none;}
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment03.html" class="sidebar-item-text sidebar-link">Assignment 03 + Pre Hackaton</a>
+  <a href="./assignment03.html" class="sidebar-item-text sidebar-link">Assignment 03</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment04.html" class="sidebar-item-text sidebar-link">Assignment 04 Hackaton</a>
+  <a href="./assignment04.html" class="sidebar-item-text sidebar-link">Assignment 04</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assignment05.html" class="sidebar-item-text sidebar-link">Assignment 05</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assignment06.html" class="sidebar-item-text sidebar-link active">Assignment 06</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assignment07.html" class="sidebar-item-text sidebar-link">Assignment 07</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assignment08.html" class="sidebar-item-text sidebar-link">Assignment 08</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./FinalProject.html" class="sidebar-item-text sidebar-link">Final Project</a>
   </div>
 </li>
       </ul>
@@ -179,9 +159,9 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a.-run-the-sample-shiny-programs-in-teams-folder" id="toc-a.-run-the-sample-shiny-programs-in-teams-folder" class="nav-link active" data-scroll-target="#a.-run-the-sample-shiny-programs-in-teams-folder">a. Run the sample Shiny programs in Teams folder</a></li>
-  <li><a href="#b.-build-a-shiny-app-using-the-following-datasets-in-datasets-library" id="toc-b.-build-a-shiny-app-using-the-following-datasets-in-datasets-library" class="nav-link" data-scroll-target="#b.-build-a-shiny-app-using-the-following-datasets-in-datasets-library">b. Build a Shiny app using the following datasets (in datasets library):</a></li>
-  <li><a href="#d.-build-a-shiny-app-loaded-with-your-own-data-sets" id="toc-d.-build-a-shiny-app-loaded-with-your-own-data-sets" class="nav-link" data-scroll-target="#d.-build-a-shiny-app-loaded-with-your-own-data-sets">d.&nbsp;Build a Shiny app loaded with your own data sets</a></li>
+  <li><a href="#read-about-the-package-quanteda-at-httpsquanteda.io" id="toc-read-about-the-package-quanteda-at-httpsquanteda.io" class="nav-link active" data-scroll-target="#read-about-the-package-quanteda-at-httpsquanteda.io">1. Read about the package quanteda at https://quanteda.io/</a></li>
+  <li><a href="#download-quanteda_textanalytics01.r-and-quanteda_textanalytics02.r-from-teams" id="toc-download-quanteda_textanalytics01.r-and-quanteda_textanalytics02.r-from-teams" class="nav-link" data-scroll-target="#download-quanteda_textanalytics01.r-and-quanteda_textanalytics02.r-from-teams">2. Download quanteda_textanalytics01.R and quanteda_textanalytics02.R from Teams</a></li>
+  <li><a href="#analyze" id="toc-analyze" class="nav-link" data-scroll-target="#analyze">3. Analyze:</a></li>
   </ul>
 </nav>
     </div>
@@ -204,43 +184,23 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<section id="a.-run-the-sample-shiny-programs-in-teams-folder" class="level3">
-<h3 class="anchored" data-anchor-id="a.-run-the-sample-shiny-programs-in-teams-folder">a. Run the sample Shiny programs in Teams folder</h3>
-<p>i. Can you change to your personal font?</p>
-<p>ii. Hint: Append the following to the ui part of the program</p>
-<p>Ex01:</p>
-<p><a href="https://americogamarra.shinyapps.io/ex03/" class="uri">https://americogamarra.shinyapps.io/ex01/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/ex01/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
-<p>Ex02:</p>
-<p><a href="https://americogamarra.shinyapps.io/ex03/" class="uri">https://americogamarra.shinyapps.io/ex02/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/ex02/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
-<p>Ex03:</p>
-<p><a href="https://americogamarra.shinyapps.io/ex03/" class="uri">https://americogamarra.shinyapps.io/ex03/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/ex03/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
+<section id="text-analytics-using-quanteda" class="level4">
+<h4 class="anchored" data-anchor-id="text-analytics-using-quanteda">Text Analytics using quanteda</h4>
 </section>
-<section id="b.-build-a-shiny-app-using-the-following-datasets-in-datasets-library" class="level3">
-<h3 class="anchored" data-anchor-id="b.-build-a-shiny-app-using-the-following-datasets-in-datasets-library">b. Build a Shiny app using the following datasets (in datasets library):</h3>
-<p>i. mtcars</p>
-<p><a href="https://americogamarra.shinyapps.io/mtcarsApp/" class="uri">https://americogamarra.shinyapps.io/mtcarsApp/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/mtcarsApp/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
-<p>ii. USArrests</p>
-<p><a href="https://americogamarra.shinyapps.io/USArrests/" class="uri">https://americogamarra.shinyapps.io/USArrests/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/USArrests/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
-<p>iii. uspop</p>
-<p><a href="https://americogamarra.shinyapps.io/uspop/" class="uri">https://americogamarra.shinyapps.io/uspop/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/uspop/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
+<section id="read-about-the-package-quanteda-at-httpsquanteda.io" class="level3">
+<h3 class="anchored" data-anchor-id="read-about-the-package-quanteda-at-httpsquanteda.io">1. Read about the package quanteda at https://quanteda.io/</h3>
+<p><strong>Quanteda</strong> is an R package designed for quantitative text analysis and natural language processing. It provides tools for managing, cleaning, and analyzing textual data, making it especially useful for researchers, students, and analysts working with large corpora of text.</p>
 </section>
-<section id="d.-build-a-shiny-app-loaded-with-your-own-data-sets" class="level3">
-<h3 class="anchored" data-anchor-id="d.-build-a-shiny-app-loaded-with-your-own-data-sets">d.&nbsp;Build a Shiny app loaded with your own data sets</h3>
-<p><a href="https://americogamarra.shinyapps.io/GeoViz1/" class="uri">https://americogamarra.shinyapps.io/GeoViz1/</a></p>
-<iframe width="800" height="600" src="https://americogamarra.shinyapps.io/GeoViz1/?_ga=
-2.2022769.1730630911.1603142774-249013827.1603142774" frameborder="0" allowfullscreen=""></iframe>
+<section id="download-quanteda_textanalytics01.r-and-quanteda_textanalytics02.r-from-teams" class="level3">
+<h3 class="anchored" data-anchor-id="download-quanteda_textanalytics01.r-and-quanteda_textanalytics02.r-from-teams">2. Download quanteda_textanalytics01.R and quanteda_textanalytics02.R from Teams</h3>
+</section>
+<section id="analyze" class="level3">
+<h3 class="anchored" data-anchor-id="analyze">3. Analyze:</h3>
+<ol type="a">
+<li><p>Biden-Xi summit data</p></li>
+<li><p>US presidential inaugural speeches</p></li>
+<li><p>Any similarities and differences over time and among presidents?</p></li>
+</ol>
 
 
 </section>

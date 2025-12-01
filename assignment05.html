@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">EPPS6356</a>
+    <a class="nav-link" href="./index.html">EPPS6302</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html">Americo Gamarra</a>
@@ -198,12 +198,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment03.html" class="sidebar-item-text sidebar-link">Assignment 03 + Pre Hackaton</a>
+  <a href="./assignment03.html" class="sidebar-item-text sidebar-link">Assignment 03</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignment04.html" class="sidebar-item-text sidebar-link">Assignment 04 Hackaton</a>
+  <a href="./assignment04.html" class="sidebar-item-text sidebar-link">Assignment 04</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -222,9 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#using-sample-datasets-or-own-data-create-the-following-charts-using-only-r-graphics" id="toc-using-sample-datasets-or-own-data-create-the-following-charts-using-only-r-graphics" class="nav-link active" data-scroll-target="#using-sample-datasets-or-own-data-create-the-following-charts-using-only-r-graphics">1. Using sample datasets or own data, create the following charts using only R graphics</a></li>
-  <li><a href="#repeat-1-using-ggplot2-with-your-own-style." id="toc-repeat-1-using-ggplot2-with-your-own-style." class="nav-link" data-scroll-target="#repeat-1-using-ggplot2-with-your-own-style.">2. Repeat 1 using ggplot2, with your own style.</a></li>
-  <li><a href="#export-the-charts-using-different-formats-such-as" id="toc-export-the-charts-using-different-formats-such-as" class="nav-link" data-scroll-target="#export-the-charts-using-different-formats-such-as">3. Export the charts using different formats such as:</a></li>
+  <li><a href="#search-government-documents-using-this-link-httpswww.govinfo.govappsearch" id="toc-search-government-documents-using-this-link-httpswww.govinfo.govappsearch" class="nav-link active" data-scroll-target="#search-government-documents-using-this-link-httpswww.govinfo.govappsearch">1. Search government documents using this link: https://www.govinfo.gov/app/search/</a></li>
+  <li><a href="#write-simple-report-on-difficulties-encountered-in-the-scraping-process." id="toc-write-simple-report-on-difficulties-encountered-in-the-scraping-process." class="nav-link" data-scroll-target="#write-simple-report-on-difficulties-encountered-in-the-scraping-process.">2. Write simple report on difficulties encountered in the scraping process.</a></li>
   </ul>
 </nav>
     </div>
@@ -247,189 +246,359 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="using-sample-datasets-or-own-data-create-the-following-charts-using-only-r-graphics" class="level3">
-<h3 class="anchored" data-anchor-id="using-sample-datasets-or-own-data-create-the-following-charts-using-only-r-graphics">1. Using sample datasets or own data, create the following charts using only R graphics</h3>
-<p>Be sure you customize the chart with your own style/theme (e.g.&nbsp;font, color, pch, etc.)</p>
-<p>a. Histogram</p>
-<p>b. Barchart</p>
-<p>i. Vertical</p>
-<p>ii. Horizonal</p>
-<p>c. Piechart</p>
-<p>d. Boxplot</p>
-<p>e. Scatterplot</p>
+<section id="government-data-api" class="level4">
+<h4 class="anchored" data-anchor-id="government-data-api">Government data API</h4>
+</section>
+<section id="search-government-documents-using-this-link-httpswww.govinfo.govappsearch" class="level3">
+<h3 class="anchored" data-anchor-id="search-government-documents-using-this-link-httpswww.govinfo.govappsearch">1. Search government documents using this link: https://www.govinfo.gov/app/search/</h3>
+<ol type="a">
+<li>Download ten most recent documents from “Foreign Relations Committee” using govtdata01.R</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R - Histogram of mpg in mtcars</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>, </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of Miles per Gallon (mpg)"</span>, </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per Gallon"</span>, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"blue"</span>, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr) <span class="co"># Alternatively, load tidyverse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'magrittr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    set_names</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Set path for reading the listing and home directory</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>localPath <span class="ot">&lt;-</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Ameri</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">DataCollection</span><span class="sc">\\</span><span class="st">Assignment05</span><span class="sc">\\</span><span class="st">"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(localPath)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rjson)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'jsonlite'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:rjson':
+
+    fromJSON, toJSON</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    flatten</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'data.table'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    transpose</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">### jsonlite</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gf_list1 <span class="ot">=</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(<span class="st">"https://github.com/datageneration/datamethods/raw/refs/heads/master/webdata/govinfo-search-results-2024-10-13T07_18_29.json"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="do">### Extract the list</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>govfiles <span class="ot">&lt;-</span> gf_list1<span class="sc">$</span>resultSet</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="do">### One more step</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>govfiles <span class="ot">&lt;-</span> gf_list1<span class="sc">$</span>resultSet <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(govfiles, <span class="dv">12</span>),<span class="at">digits=</span><span class="dv">4</span>, <span class="at">caption =</span> <span class="st">"GOV Files Search Results"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-1a-1.png" class="img-fluid" width="672"></p>
+<table class="table table-sm table-striped">
+<caption>GOV Files Search Results</caption>
+<colgroup>
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 26%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 0%">
+<col style="width: 7%">
+<col style="width: 0%">
+<col style="width: 32%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">index</th>
+<th style="text-align: left;">collection</th>
+<th style="text-align: left;">packageId</th>
+<th style="text-align: left;">granuleId</th>
+<th style="text-align: left;">title</th>
+<th style="text-align: left;">detailsLink</th>
+<th style="text-align: left;">pdfLink</th>
+<th style="text-align: left;">htmlLink</th>
+<th style="text-align: left;">xmlLink</th>
+<th style="text-align: left;">otherLink1</th>
+<th style="text-align: left;">otherLink2</th>
+<th style="text-align: left;">teaser</th>
+<th style="text-align: left;">publishdate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sres890is</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Condemning the brutal Hamas-led terrorist attack on Israel on October 7, 2023, and supporting an outcome that ensures the forever survival of Israel, the complete denial of the ability of Hamas to reconstitute in the region, and the safe release of United States hostages from the Gaza Strip.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sres890is</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sres890is/pdf/BILLS-118sres890is.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sres890is/html/BILLS-118sres890is.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sres890is/xml/BILLS-118sres890is.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">that ensures the forever survival of Israel, the complete denial of the ability of Hamas to reconstitute in the region, and the safe release of United States hostages from the Gaza Strip. IN THE SENATE OF THE UNITED STATES September 25, 2024 Ms.&nbsp;Ernst (for herself, Mr.&nbsp;Barrasso, Mrs.&nbsp;Blackburn, Mr.&nbsp;Boozman, Mr.&nbsp;Braun, Mrs.&nbsp;Britt, Mr.&nbsp;Budd, …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sjres114is</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sjres114is</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres114is/pdf/BILLS-118sjres114is.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres114is/html/BILLS-118sjres114is.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres114is/xml/BILLS-118sjres114is.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">of Israel of certain defense articles and services. IN THE SENATE OF THE UNITED STATES September 25, 2024 Mr.&nbsp;Sanders introduced the following joint resolution; which was read twice and referred to the Committee on Foreign Relations JOINT RESOLUTION Providing for congressional disapproval of the proposed foreign military sale to the Government of …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sres805ats</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Commemorating the tenth anniversary of the murder of James Wright Foley and calling for the moral courage to prioritize the return of Americans held captive abroad and take all necessary efforts to deter international hostage taking and arbitrary detention.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sres805ats</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sres805ats/pdf/BILLS-118sres805ats.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sres805ats/html/BILLS-118sres805ats.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sres805ats/xml/BILLS-118sres805ats.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">to prioritize the return of Americans held captive abroad and take all necessary efforts to deter international hostage taking and arbitrary detention. IN THE SENATE OF THE UNITED STATES August 1, 2024 Mrs.&nbsp;Shaheen (for herself and Mr.&nbsp;Graham) submitted the following resolution; which was referred to the Committee on Foreign Relations …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sjres115is</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Providing for congressional disapproval of the proposed license amendment for the export of certain defense articles, defense services, and technical data to Israel.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sjres115is</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres115is/pdf/BILLS-118sjres115is.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres115is/html/BILLS-118sjres115is.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres115is/xml/BILLS-118sjres115is.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">defense articles, defense services, and technical data to Israel. IN THE SENATE OF THE UNITED STATES September 25, 2024 Mr.&nbsp;Sanders (for himself, Mr.&nbsp;Welch, and Mr.&nbsp;Merkley) introduced the following joint resolution; which was read twice and referred to the Committee on Foreign Relations JOINT RESOLUTION Providing for congressional disapproval …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sjres113is</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sjres113is</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres113is/pdf/BILLS-118sjres113is.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres113is/html/BILLS-118sjres113is.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres113is/xml/BILLS-118sjres113is.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">of Israel of certain defense articles and services. IN THE SENATE OF THE UNITED STATES September 25, 2024 Mr.&nbsp;Sanders (for himself, Mr.&nbsp;Welch, and Mr.&nbsp;Merkley) introduced the following joint resolution; which was read twice and referred to the Committee on Foreign Relations JOINT RESOLUTION Providing for congressional disapproval of the proposed …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sjres111is</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sjres111is</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres111is/pdf/BILLS-118sjres111is.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres111is/html/BILLS-118sjres111is.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres111is/xml/BILLS-118sjres111is.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">of Israel of certain defense articles and services. IN THE SENATE OF THE UNITED STATES September 25, 2024 Mr.&nbsp;Sanders (for himself, Mr.&nbsp;Welch, Mr.&nbsp;Merkley, and Mr.&nbsp;Schatz) introduced the following joint resolution; which was read twice and referred to the Committee on Foreign Relations JOINT RESOLUTION Providing for congressional disapproval of the…</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Congressional Bills</td>
+<td style="text-align: left;">BILLS-118sjres112is</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Providing for congressional disapproval of the proposed foreign military sale to the Government of Israel of certain defense articles and services.</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/BILLS-118sjres112is</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres112is/pdf/BILLS-118sjres112is.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres112is/html/BILLS-118sjres112is.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/BILLS-118sjres112is/xml/BILLS-118sjres112is.xml</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">of Israel of certain defense articles and services. IN THE SENATE OF THE UNITED STATES September 25, 2024 Mr.&nbsp;Sanders (for himself and Mr.&nbsp;Welch) introduced the following joint resolution; which was read twice and referred to the Committee on Foreign Relations JOINT RESOLUTION Providing for congressional disapproval of the proposed foreign military…</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Congressional Recor</td>
+<td style="text-align: left;">CREC-2024-09-25</td>
+<td style="text-align: left;">CREC-2024-09-25-pt1-PgD951</td>
+<td style="text-align: left;">Daily Digest/Highlights + Senate</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/CREC-2024-09-25/CREC-2024-09-25-pt1-PgD951</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgD951.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/html/CREC-2024-09-25-pt1-PgD951.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Action Routine Proceedings, pages S6387-S6469 Measures Introduced: One hundred twenty-nine bills and forty-three resolutions were introduced, as follows: S. 5164-5292, S.J. Res. 111- 116, S. Res. 856-890, and S. Con. Res. 42-43.</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Congressional Recor</td>
+<td style="text-align: left;">CREC-2024-09-25</td>
+<td style="text-align: left;">CREC-2024-09-25-pt1-PgS6417-2</td>
+<td style="text-align: left;">ARMS SALES NOTIFICATIONS</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/CREC-2024-09-25/CREC-2024-09-25-pt1-PgS6417-2</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgS6417-2.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/html/CREC-2024-09-25-pt1-PgS6417-2.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">of certain proposed arms sales as defined by that statute. Upon such notification, the Congress has 30 calendar days during which the sale may be reviewed. The provision stipulates that, in the Senate, the notification of proposed sales shall be sent to the chairman of the Senate Foreign Relations Committee. In keeping with the committee’s …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Congressional Recor</td>
+<td style="text-align: left;">CREC-2024-09-25</td>
+<td style="text-align: left;">CREC-2024-09-25-pt1-PgS6418</td>
+<td style="text-align: left;">ARMS SALES NOTIFICATIONS</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/CREC-2024-09-25/CREC-2024-09-25-pt1-PgS6418</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgS6418.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/html/CREC-2024-09-25-pt1-PgS6418.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">of certain proposed arms sales as defined by that statute. Upon such notification, the Congress has 30 calendar days during which the sale may be reviewed. The provision stipulates that, in the Senate, the notification of proposed sales shall be sent to the chairman of the Senate Foreign Relations Committee. In keeping with the committee’s …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">Congressional Recor</td>
+<td style="text-align: left;">CREC-2024-09-25</td>
+<td style="text-align: left;">CREC-2024-09-25-pt1-PgS6435-2</td>
+<td style="text-align: left;">INTRODUCTION OF BILLS AND JOINT RESOLUTIONS</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/CREC-2024-09-25/CREC-2024-09-25-pt1-PgS6435-2</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgS6435-2.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/html/CREC-2024-09-25-pt1-PgS6435-2.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">, and referred as indicated: By Mr.&nbsp;GRASSLEY (for himself, Ms.&nbsp;Hassan, Mr.&nbsp;Cornyn, Mrs.&nbsp;Shaheen, Ms.&nbsp;Cortez Masto, Mr.&nbsp;Kennedy, and Ms.&nbsp;Klobuchar): S. 5164. A bill to extend the temporary scheduling order for fentanyl-related substances; to the Committee on the Judiciary. By Mr.&nbsp;PADILLA (for himself, Ms.&nbsp;Butler, Mr.&nbsp;Whitehouse, Ms.&nbsp;Hirono, Mr…</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Congressional Recor</td>
+<td style="text-align: left;">CREC-2024-09-25</td>
+<td style="text-align: left;">CREC-2024-09-25-pt1-PgS6439</td>
+<td style="text-align: left;">SUBMISSION OF CONCURRENT AND SENATE RESOLUTIONS</td>
+<td style="text-align: left;">https://www.govinfo.gov/app/details/CREC-2024-09-25/CREC-2024-09-25-pt1-PgS6439</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgS6439.pdf</td>
+<td style="text-align: left;">https://www.govinfo.gov/content/pkg/CREC-2024-09-25/html/CREC-2024-09-25-pt1-PgS6439.htm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">as indicated: By Ms.&nbsp;HIRONO (for herself, Mr.&nbsp;Booker, Mr.&nbsp;Brown, Ms.&nbsp;Butler, Ms.&nbsp;Cortez Masto, Mr.&nbsp;Fetterman, Mr.&nbsp;Helmy, Mr.&nbsp;Kaine, Ms.&nbsp;Klobuchar, Mrs.&nbsp;Murray, Mr.&nbsp;Padilla, Ms.&nbsp;Rosen, Mr.&nbsp;Sanders, Mr.&nbsp;Schatz, Mr.&nbsp;Warner, Ms.&nbsp;Warren, Ms.&nbsp;Murkowski, and Ms.&nbsp;Duckworth): S. Res. 856. A resolution recognizing the month of October 2024 as Filipino …</td>
+<td style="text-align: left;">2024-09-25</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R - Vertical Barplot of Cylinders</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(mtcars<span class="sc">$</span>cyl), </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"orange"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Barplot of Cylinders (Vertical)"</span>, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Cylinders"</span>, </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Count"</span>, </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-1b-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparing for bulk download of government documents</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>govfiles<span class="sc">$</span>id <span class="ot">=</span> govfiles<span class="sc">$</span>packageId</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>pdf_govfiles_url <span class="ot">=</span> govfiles<span class="sc">$</span>pdfLink</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pdf_govfiles_id <span class="ot">&lt;-</span> govfiles<span class="sc">$</span>index</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Directory to save the pdf's</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> localPath</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to download pdfs</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>download_govfiles_pdf <span class="ot">&lt;-</span> <span class="cf">function</span>(url, id) {</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    destfile <span class="ot">&lt;-</span> <span class="fu">paste0</span>(save_dir, <span class="st">"govfiles_"</span>, id, <span class="st">".pdf"</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">download.file</span>(url, <span class="at">destfile =</span> destfile, <span class="at">mode =</span> <span class="st">"wb"</span>) <span class="co"># Binary files</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Important: random sleep between 1 and 3 seconds to avoid suspicion of "hacking" the server</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">paste</span>(<span class="st">"Successfully downloaded:"</span>, url))</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">paste</span>(<span class="st">"Failed to download:"</span>, url))</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R - Horizontal Barplot of Cylinders</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(mtcars<span class="sc">$</span>cyl), </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightgreen"</span>, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">horiz =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Barplot of Cylinders (Horizontal)"</span>, </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Count"</span>, </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cylinders"</span>, </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-1b-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R - Pie Chart of Cylinders</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cyl_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(cyl_table, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>), </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Pie Chart of Cylinder Counts"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-1c-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R - Boxplot of mpg by cylinders</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg <span class="sc">~</span> cyl, </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> mtcars, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"pink"</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of MPG by Cylinders"</span>, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Cylinders"</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Miles per Gallon"</span>, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"darkred"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-1d-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R - Scatterplot of mpg vs hp</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"purple"</span>, </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatterplot of MPG vs Horsepower"</span>, </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per Gallon"</span>, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Horsepower"</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-1e-1.png" class="img-fluid" width="672"></p>
-</div>
+<pre><code>## Download 10 documents
+start.time &lt;- Sys.time()
+message("Starting downloads")
+results &lt;- 1:10 %&gt;% 
+  purrr::map_chr(~ download_govfiles_pdf(pdf_govfiles_url[.], pdf_govfiles_id[.]))
+message("Finished downloads")
+end.time &lt;- Sys.time()
+time.taken &lt;- end.time - start.time
+time.taken
+
+# Print results
+print(results)</code></pre>
+<p>Finished downloads Time difference of 25.02791 secs [1] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sres890is/pdf/BILLS-118sres890is.pdf”<br>
+[2] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sjres114is/pdf/BILLS-118sjres114is.pdf”<br>
+[3] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sres805ats/pdf/BILLS-118sres805ats.pdf”<br>
+[4] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sjres115is/pdf/BILLS-118sjres115is.pdf”<br>
+[5] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sjres113is/pdf/BILLS-118sjres113is.pdf”<br>
+[6] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sjres111is/pdf/BILLS-118sjres111is.pdf”<br>
+[7] “Successfully downloaded: https://www.govinfo.gov/content/pkg/BILLS-118sjres112is/pdf/BILLS-118sjres112is.pdf”<br>
+[8] “Successfully downloaded: https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgD951.pdf”<br>
+[9] “Successfully downloaded: https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgS6417-2.pdf” [10] “Successfully downloaded: https://www.govinfo.gov/content/pkg/CREC-2024-09-25/pdf/CREC-2024-09-25-pt1-PgS6418.pdf”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Assignment05%5Cresults.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Assignment05 Downloads</figcaption><p></p>
+</figure>
 </div>
 </section>
-<section id="repeat-1-using-ggplot2-with-your-own-style." class="level3">
-<h3 class="anchored" data-anchor-id="repeat-1-using-ggplot2-with-your-own-style.">2. Repeat 1 using ggplot2, with your own style.</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 - Histogram of mpg in mtcars</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Histogram of Miles per Gallon (mpg)"</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Miles per Gallon"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-2a-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 - Vertical Barplot of Cylinders</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Barplot of Cylinders (Vertical)"</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Cylinders"</span>) <span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Count"</span>) <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-2b-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 - Horizontal Barplot of Cylinders</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Barplot of Cylinders (Horizontal)"</span>) <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Count"</span>) <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Cylinders"</span>) <span class="sc">+</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-2b-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 - Pie Chart of Cylinders</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Pie Chart of Cylinder Counts"</span>) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-2c-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 - Boxplot of mpg by cylinders</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Boxplot of MPG by Cylinders"</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Cylinders"</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Miles per Gallon"</span>) <span class="sc">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"pink"</span>, <span class="st">"yellow"</span>, <span class="st">"lightblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-2d-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot2 - Scatterplot of mpg vs hp</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp)) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scatterplot of MPG vs Horsepower"</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Miles per Gallon"</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Horsepower"</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assignment05_files/figure-html/assignment5-2e-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<section id="comment" class="level4">
-<h4 class="anchored" data-anchor-id="comment">Comment</h4>
+<section id="write-simple-report-on-difficulties-encountered-in-the-scraping-process." class="level3">
+<h3 class="anchored" data-anchor-id="write-simple-report-on-difficulties-encountered-in-the-scraping-process.">2. Write simple report on difficulties encountered in the scraping process.</h3>
+<p><strong>a. How useable the scraped data?</strong></p>
+<p>Scraped data is only partially ready for use. Although it contains valuable information such as financial statements and market indicators, it typically requires cleaning and standardization. Inconsistent HTML structures can lead to incomplete or misaligned records. Consequently, preprocessing steps—such as removing extraneous symbols, converting data types, and addressing missing values—are essential prior to statistical or economic analysis.</p>
+<p><strong>b. How to improve?</strong></p>
 <ul>
-<li><p>Base R functions provide a simple way to create plots but offer limited styling options.</p></li>
-<li><p>ggplot2 provides greater flexibility and customization options, allowing for more refined visualizations</p></li>
-</ul>
-</section>
-</section>
-<section id="export-the-charts-using-different-formats-such-as" class="level3">
-<h3 class="anchored" data-anchor-id="export-the-charts-using-different-formats-such-as">3. Export the charts using different formats such as:</h3>
-<p>a. <a href="assignment05/bplot.pdf" title="bplot.pdf">.pdf</a></p>
-<p>b. .<a href="assignment05/bplot.jpg" title="bplot.jpg">jpg</a></p>
-<p>c. .<a href="assignment05/bplot.svg" title="bplot.svg">svg</a></p>
-<p>d. .<a href="assignment05/bplot.tiff" title="bplot.tiff">tiff</a></p>
-<p>e. .<a href="assignment05/bplot.bmp" title="bplot.bmp">bmp</a></p>
-<section id="comment-1" class="level4">
-<h4 class="anchored" data-anchor-id="comment-1">Comment</h4>
-<ul>
-<li><p>TIFF image format is not compressed and has most of the details</p></li>
-<li><p>JPG image format is the most compressed but quality still good</p></li>
-<li><p>PDF is the smallest file and quality is good to print and share</p></li>
+<li>Leverage APIs when possible: Opt for official APIs instead of scraping, as they tend to be more consistent and dependable.</li>
+<li>Implement robust error handling: Use exception handling and logging to quickly detect failed scrapes or changes in webpage structures.</li>
+<li>Set up scheduled updates: Automate scraping at regular intervals to ensure the dataset remains current.</li>
+<li>Perform data validation checks: Write scripts to verify the accuracy and completeness of the extracted information.</li>
+<li>Utilize specialized libraries: Apply tools such as rvest or rSelenium for dynamic pages and for flexible scraping and parsing.</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
